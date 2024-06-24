@@ -9,9 +9,9 @@ package chess;
 public class ChessBoard {
 
     public ChessBoard() {
-        
+        ChessPiece[][] currentBoard = new ChessPiece[8][8];
     }
-
+    //I made my chessboard a 2D Array of ChessPiece objects
     /**
      * Adds a chess piece to the chessboard
      *

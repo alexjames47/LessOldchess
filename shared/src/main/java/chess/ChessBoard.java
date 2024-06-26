@@ -30,14 +30,23 @@ public class ChessBoard {
      * position
      */
     public ChessPiece getPiece(ChessPosition position) {
-        throw new RuntimeException("Not implemented");
+        return currentBoard[position.getRow()][position.getColumn()];
     }
 
     /**
      * Sets the board to the default starting board
      * (How the game of chess normally starts)
+     * Looks like below
+     *                 |r|n|b|q|k|b|n|r|
+     *                 |p|p|p|p|p|p|p|p|
+     *                 | | | | | | | | |
+     *                 | | | | | | | | |
+     *                 | | | | | | | | |
+     *                 | | | | | | | | |
+     *                 |P|P|P|P|P|P|P|P|
+     *                 |R|N|B|Q|K|B|N|R|
      */
     public void resetBoard() {
-        throw new RuntimeException("Not implemented");
+
     }
 }

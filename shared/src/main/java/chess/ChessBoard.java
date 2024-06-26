@@ -47,6 +47,36 @@ public class ChessBoard {
      *                 |R|N|B|Q|K|B|N|R|
      */
     public void resetBoard() {
+        this.clearBoard();
+        ChessGame.TeamColor Colour = ChessGame.TeamColor.BLACK;
+        for(int i=0; i<8; i++){
+            if(Colour == ChessGame.TeamColor.WHITE) {i+=6;} //
+            currentBoard[i][0] = new ChessPiece(Colour, ChessPiece.PieceType.ROOK);
+            currentBoard[i][1] = new ChessPiece(Colour, ChessPiece.PieceType.KNIGHT);
+            currentBoard[i][2] = new ChessPiece(Colour, ChessPiece.PieceType.BISHOP);
+            currentBoard[i][3] = new ChessPiece(Colour, ChessPiece.PieceType.QUEEN);
+            currentBoard[i][4] = new ChessPiece(Colour, ChessPiece.PieceType.KING);
+            currentBoard[i][5] = new ChessPiece(Colour, ChessPiece.PieceType.BISHOP);
+            currentBoard[i][6] = new ChessPiece(Colour, ChessPiece.PieceType.KNIGHT);
+            currentBoard[i][7] = new ChessPiece(Colour, ChessPiece.PieceType.ROOK);
+            if(Colour == ChessGame.TeamColor.WHITE) {i-=2;}
+            for(int j=0; j<8; j--){
+                currentBoard[i+1][j] = new ChessPiece(Colour, ChessPiece.PieceType.PAWN);
+            }
+            Colour = ChessGame.TeamColor.WHITE;
+        }
+    }
+
+    public void clearBoard() {
+        for (int i=0; i<8; i++){
+            for (int j=0; j<8; j++){
+                currentBoard[i][j] = null;
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
 
     }
 }

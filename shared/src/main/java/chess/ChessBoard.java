@@ -77,13 +77,25 @@ public class ChessBoard {
 
     @Override
     public String toString() {
-        StringBuilder builtBoard;
+        StringBuilder builtBoard = null;
+        builtBoard.append("|");
         for (int i=0; i<8; i++){
 
-            if(i>0) {builtBoard.append("\n");}
+            if(i>0) {
+                builtBoard.append("\n");
+                builtBoard.append("|");
+            }
             for (int j=0; j<8; j++){
-
+                ChessPosition currentPosition = new ChessPosition(i,j);
+                if(this.getPiece(currentPosition) != null){
+                    builtBoard.append(getPiece(currentPosition).toString());
+                }
+                else{
+                    builtBoard.append(" ");
+                }
+                builtBoard.append("|");
             }
         }
+        return builtBoard.toString();
     }
 }

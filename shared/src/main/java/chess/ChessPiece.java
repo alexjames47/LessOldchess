@@ -57,6 +57,16 @@ public class ChessPiece {
 
     @Override
     public String toString() {
-        if
+        String value;
+        if (this.currentPieceColor == ChessGame.TeamColor.WHITE){
+            value = String.valueOf(currentType);
+            value = value.substring(0,1);
+        }
+        else{
+            value = String.valueOf(currentType);
+            value = value.substring(0,1);
+            value = value.toLowerCase();
+        }
+        return value;
     }
 }

@@ -8,9 +8,9 @@ package chess;
  */
 public class ChessBoard {
 
-    public ChessBoard() {
-        ChessPiece[][] currentBoard = new ChessPiece[8][8];
-    }
+    ChessPiece[][] currentBoard = new ChessPiece[8][8];
+
+    public ChessBoard() {}
     //I made my chessboard a 2D Array of ChessPiece objects
     /**
      * Adds a chess piece to the chessboard
@@ -19,7 +19,7 @@ public class ChessBoard {
      * @param piece    the piece to add
      */
     public void addPiece(ChessPosition position, ChessPiece piece) {
-
+        currentBoard[position.getRow()][position.getColumn()] = piece;
     }
 
     /**

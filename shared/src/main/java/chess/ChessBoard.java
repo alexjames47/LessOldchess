@@ -19,7 +19,7 @@ public class ChessBoard {
      * @param piece    the piece to add
      */
     public void addPiece(ChessPosition position, ChessPiece piece) {
-        currentBoard[position.getRow()][position.getColumn()] = piece;
+        currentBoard[position.getRow()-1][position.getColumn()-1] = piece;
     }
 
     /**
@@ -30,7 +30,7 @@ public class ChessBoard {
      * position
      */
     public ChessPiece getPiece(ChessPosition position) {
-        return currentBoard[position.getRow()][position.getColumn()];
+        return currentBoard[position.getRow()-1][position.getColumn()-1];
     }
 
     /**
@@ -48,9 +48,9 @@ public class ChessBoard {
      */
     public void resetBoard() {
         this.clearBoard();
-        ChessGame.TeamColor Colour = ChessGame.TeamColor.BLACK;
-        for(int i=0; i<8; i++){
-            if(Colour == ChessGame.TeamColor.WHITE) {i+=6;} //
+        ChessGame.TeamColor Colour = ChessGame.TeamColor.WHITE;
+        for(int i=0; i<5; i++){
+            if(Colour == ChessGame.TeamColor.BLACK) {i+=6;} //
             currentBoard[i][0] = new ChessPiece(Colour, ChessPiece.PieceType.ROOK);
             currentBoard[i][1] = new ChessPiece(Colour, ChessPiece.PieceType.KNIGHT);
             currentBoard[i][2] = new ChessPiece(Colour, ChessPiece.PieceType.BISHOP);
@@ -59,11 +59,11 @@ public class ChessBoard {
             currentBoard[i][5] = new ChessPiece(Colour, ChessPiece.PieceType.BISHOP);
             currentBoard[i][6] = new ChessPiece(Colour, ChessPiece.PieceType.KNIGHT);
             currentBoard[i][7] = new ChessPiece(Colour, ChessPiece.PieceType.ROOK);
-            if(Colour == ChessGame.TeamColor.WHITE) {i-=2;}
-            for(int j=0; j<8; j--){
+            if(Colour == ChessGame.TeamColor.BLACK) {i-=2;}
+            for(int j=0; j<8; j++){
                 currentBoard[i+1][j] = new ChessPiece(Colour, ChessPiece.PieceType.PAWN);
             }
-            Colour = ChessGame.TeamColor.WHITE;
+            Colour = ChessGame.TeamColor.BLACK;
         }
     }
 
@@ -77,7 +77,7 @@ public class ChessBoard {
 
     @Override
     public String toString() {
-        StringBuilder builtBoard = null;
+        StringBuilder builtBoard = new StringBuilder();
         builtBoard.append("|");
         for (int i=0; i<8; i++){
 
@@ -86,7 +86,7 @@ public class ChessBoard {
                 builtBoard.append("|");
             }
             for (int j=0; j<8; j++){
-                ChessPosition currentPosition = new ChessPosition(i,j);
+                ChessPosition currentPosition = new ChessPosition(i+1,j+1);
                 if(this.getPiece(currentPosition) != null){
                     builtBoard.append(getPiece(currentPosition).toString());
                 }

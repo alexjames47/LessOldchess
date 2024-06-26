@@ -58,14 +58,14 @@ public class ChessPiece {
     @Override
     public String toString() {
         String value;
-        if (this.currentPieceColor == ChessGame.TeamColor.WHITE){
+        if (this.currentPieceColor == ChessGame.TeamColor.BLACK){
             value = String.valueOf(currentType);
-            value = value.substring(0,1);
+            value = value.substring(0,1);   // Black is Upper Case
         }
         else{
             value = String.valueOf(currentType);
             value = value.substring(0,1);
-            value = value.toLowerCase();
+            value = value.toLowerCase();    // White is Lower Case
         }
         return value;
     }

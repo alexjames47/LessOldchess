@@ -56,7 +56,7 @@ public class ChessBoard {
         this.clearBoard();
         ChessGame.TeamColor Colour = ChessGame.TeamColor.WHITE;
         for(int i=0; i<5; i++){
-            if(Colour == ChessGame.TeamColor.BLACK) {i+=6;} //
+            if(Colour == ChessGame.TeamColor.BLACK) {i+=6;}
             currentBoard[i][0] = new ChessPiece(Colour, ChessPiece.PieceType.ROOK);
             currentBoard[i][1] = new ChessPiece(Colour, ChessPiece.PieceType.KNIGHT);
             currentBoard[i][2] = new ChessPiece(Colour, ChessPiece.PieceType.BISHOP);

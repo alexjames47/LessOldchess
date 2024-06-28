@@ -53,7 +53,10 @@ public class ChessPiece {
      * @return Collection of valid moves
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
-        throw new RuntimeException("Not implemented");
+        if(board.getPiece(myPosition).getPieceType() == PieceType.BISHOP){
+
+        }
+        return null;
     }
 
     @Override

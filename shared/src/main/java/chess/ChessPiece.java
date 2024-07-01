@@ -54,7 +54,7 @@ public class ChessPiece {
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
         if(board.getPiece(myPosition).getPieceType() == PieceType.BISHOP){
-
+            return null;
         }
         return null;
     }

@@ -10,8 +10,14 @@ import java.util.HashSet;
 public class BishopMove extends PieceMoveCalculator implements PieceMove{
     public Collection<ChessMove> currentPieceMoves(ChessBoard currentBoard, ChessPosition currentPosition){
         HashSet<ChessMove> movesHashSet = new HashSet<>();
+        int[][] movableDirections = bishopMovableDirections();
+        ChessPosition initialPosition = new ChessPosition(currentPosition.getRow(),currentPosition.getColumn());
+        ChessPosition[] chessPositions = new ChessPosition[]{initialPosition,currentPosition};
         for (int i=0; i<4; i++){
-            while()
+            while(withinBoard(chessPositions[1],movableDirections[i])){
+                movesHashSet.add(//add a possible move with the Calculator)
+                if(!board.)
+            }
         }
         return movesHashSet;
     }

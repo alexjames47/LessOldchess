@@ -73,6 +73,10 @@ public class ChessBoard {
         }
     }
 
+    public boolean isSpaceEmpty(ChessPosition currentPosition){
+        return (currentBoard[currentPosition.getRow()-1][currentPosition.getColumn()-1] == null);
+    }
+
     public void clearBoard() {
         for (int i=0; i<8; i++){
             for (int j=0; j<8; j++){

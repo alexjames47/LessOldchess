@@ -1,6 +1,7 @@
 package chess.chessMoveCalculators;
 
 import chess.ChessBoard;
+import chess.ChessGame;
 import chess.ChessMove;
 import chess.ChessPosition;
 
@@ -10,19 +11,60 @@ import java.util.HashSet;
 public class PawnMove extends PieceMoveCalculator implements PieceMove{
 
     public Collection<ChessMove> currentPieceMoves(ChessBoard currentBoard, ChessPosition currentPosition){
+        if(currentBoard.getCurrentBoard()[currentPosition.getRow()-1][currentPosition.getColumn()-1].getTeamColor()
+                == ChessGame.TeamColor.WHITE){
+            return whitePawnMoves(currentBoard,currentPosition);
+        } else if(currentBoard.getCurrentBoard()[currentPosition.getRow()-1][currentPosition.getColumn()-1].getTeamColor()
+                == ChessGame.TeamColor.BLACK){
+            return blackPawnMoves(currentBoard,currentPosition);
+        }
+        throw new RuntimeException("Invalid Piece");
+    }
+
+    public Collection<ChessMove> whitePawnMoves(ChessBoard currentBoard, ChessPosition currentPosition){
         HashSet<ChessMove> movesHashSet = new HashSet<>();
-        int[][] movableDirections = pawnMovableDirections();
+        int[][] movableDirections = whitePawnMovableDirections();
         ChessPosition initialPosition = new ChessPosition(currentPosition.getRow(),currentPosition.getColumn());
         ChessPosition[] chessPositions = new ChessPosition[]{initialPosition,currentPosition};
-        for (int i=0; i<4; i++){
-            while(withinBoard(chessPositions[1],movableDirections[i])){
-                movesHashSet.add(pieceMoveAdder(chessPositions, movableDirections[i], currentBoard)); //add the possible move
-                if(!currentBoard.isSpaceEmpty(chessPositions[1])){break;}
+        for (int i=0; i<3; i++){
+            if(withinBoard(chessPositions[1],movableDirections[i])){
+                if(whitePawnCanMove(currentBoard, i, chessPositions[1])){
+                    movesHashSet.add(pieceMoveAdder(chessPositions, movableDirections[i], currentBoard)); //add the possible move
+                }
             }
             chessPositions[1] = chessPositions[0];
         }
         movesHashSet.remove(null);
         return movesHashSet;
+    }
+
+    public Collection<ChessMove> blackPawnMoves(ChessBoard currentBoard, ChessPosition currentPosition){
+        HashSet<ChessMove> movesHashSet = new HashSet<>();
+        int[][] movableDirections = blackPawnMovableDirections();
+        ChessPosition initialPosition = new ChessPosition(currentPosition.getRow(),currentPosition.getColumn());
+        ChessPosition[] chessPositions = new ChessPosition[]{initialPosition,currentPosition};
+        for (int i=0; i<3; i++){
+            if(withinBoard(chessPositions[1],movableDirections[i])){
+                if(blackPawnCanMove(currentBoard, i, chessPositions[1])){
+                    movesHashSet.add(pieceMoveAdder(chessPositions, movableDirections[i], currentBoard)); //add the possible move
+                }
+            }
+            chessPositions[1] = chessPositions[0];
+        }
+        movesHashSet.remove(null);
+        return movesHashSet;
+    }
+
+    boolean whitePawnCanMove(ChessBoard currentBoard, int i, ChessPosition currentPosition){
+        return ((i==2 && !currentBoard.isSpaceEmpty(new ChessPosition(currentPosition.getRow()+1,currentPosition.getColumn()-1)))
+                || (i==1 && !currentBoard.isSpaceEmpty(new ChessPosition(currentPosition.getRow()+1,currentPosition.getColumn()+1)))
+                || (i==0 && currentBoard.isSpaceEmpty(new ChessPosition(currentPosition.getRow()+1,currentPosition.getColumn()))));
+    }
+
+    boolean blackPawnCanMove(ChessBoard currentBoard, int i, ChessPosition currentPosition){
+        return ((i==2 && !currentBoard.isSpaceEmpty(new ChessPosition(currentPosition.getRow()-1,currentPosition.getColumn()-1)))
+                || (i==1 && !currentBoard.isSpaceEmpty(new ChessPosition(currentPosition.getRow()-1,currentPosition.getColumn()+1)))
+                || (i==0 && currentBoard.isSpaceEmpty(new ChessPosition(currentPosition.getRow()-1,currentPosition.getColumn()))));
     }
 
     int[][] whitePawnMovableDirections(){

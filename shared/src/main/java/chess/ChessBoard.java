@@ -42,6 +42,10 @@ public class ChessBoard {
         else return null;
     }
 
+    public ChessPiece[][] getCurrentBoard() {
+        return currentBoard;
+    }
+
     /**
      * Sets the board to the default starting board
      * (How the game of chess normally starts)

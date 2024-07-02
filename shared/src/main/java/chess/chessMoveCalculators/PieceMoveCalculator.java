@@ -24,7 +24,7 @@ public class PieceMoveCalculator {
         } else if(currentBoard.isSpaceEmpty(possibleNewPosition)) {
             ChessMove moveToAdd = new ChessMove(startingPosition,possibleNewPosition,null);
             chessPositions[1] = possibleNewPosition;
-            return moveToAdd;
+            return moveToAdd; // Can Move here
         }
         return null;
     }
@@ -32,8 +32,8 @@ public class PieceMoveCalculator {
     boolean withinBoard(ChessPosition currentPosition, int[] currentDirection){
         return(currentPosition.getRow()+currentDirection[0]<9
                 && currentPosition.getRow()+currentDirection[0] > 0
-                && currentPosition.getRow()+currentDirection[1] < 9
-                && currentPosition.getRow()+currentDirection[1] > 0);
+                && currentPosition.getColumn()+currentDirection[1] < 9
+                && currentPosition.getColumn()+currentDirection[1] > 0);
     }
 
 }

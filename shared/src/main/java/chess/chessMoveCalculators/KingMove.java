@@ -14,10 +14,9 @@ public class KingMove extends PieceMoveCalculator implements PieceMove{
         int[][] movableDirections = kingMovableDirections();
         ChessPosition initialPosition = new ChessPosition(currentPosition.getRow(),currentPosition.getColumn());
         ChessPosition[] chessPositions = new ChessPosition[]{initialPosition,currentPosition};
-        for (int i=0; i<4; i++){
-            while(withinBoard(chessPositions[1],movableDirections[i])){
+        for (int i=0; i<8; i++){
+            if(withinBoard(chessPositions[1],movableDirections[i])){
                 movesHashSet.add(pieceMoveAdder(chessPositions, movableDirections[i], currentBoard)); //add the possible move
-                if(!currentBoard.isSpaceEmpty(chessPositions[1])){break;}
             }
             chessPositions[1] = chessPositions[0];
         }

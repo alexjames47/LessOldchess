@@ -27,17 +27,17 @@ public class RookMove extends PieceMoveCalculator implements PieceMove{
 
     int[][] rookMovableDirections(){
         int[][] directions = new int[4][2];
-        //SW
-        directions[0][0] = -1;
-        directions[0][1] = -1;
-        //SE
+        //N
+        directions[0][0] = 1;
+        directions[0][1] = 0;
+        //S
         directions[1][0] = -1;
-        directions[1][1] = 1;
-        //NE
-        directions[2][0] = 1;
+        directions[1][1] = 0;
+        //E
+        directions[2][0] = 0;
         directions[2][1] = 1;
-        //NW
-        directions[3][0] = 1;
+        //W
+        directions[3][0] = 0;
         directions[3][1] = -1;
         return directions;
     }

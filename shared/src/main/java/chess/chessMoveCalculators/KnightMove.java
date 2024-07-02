@@ -26,19 +26,31 @@ public class KnightMove extends PieceMoveCalculator implements PieceMove{
     }
 
     int[][] knightMovableDirections(){
-        int[][] directions = new int[4][2];
+        int[][] directions = new int[8][2];
         //SW
         directions[0][0] = -1;
         directions[0][1] = -1;
         //SE
         directions[1][0] = -1;
         directions[1][1] = 1;
-        //NE
-        directions[2][0] = 1;
-        directions[2][1] = 1;
-        //NW
+        //S
+        directions[2][0] = -1;
+        directions[2][1] = 0;
+        //N
         directions[3][0] = 1;
-        directions[3][1] = -1;
+        directions[3][1] = 0;
+        //NE
+        directions[4][0] = 1;
+        directions[4][1] = 1;
+        //NW
+        directions[5][0] = 1;
+        directions[5][1] = -1;
+        //E
+        directions[6][0] = 0;
+        directions[6][1] = 1;
+        //W
+        directions[7][0] = 0;
+        directions[7][1] = -1;
         return directions;
     }
 

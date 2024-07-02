@@ -56,11 +56,23 @@ public class ChessPiece {
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
         if(board.getPiece(myPosition).getPieceType() == PieceType.BISHOP){
-            BishopMove ValidBishopMovesCalculator = new BishopMove();
-            return ValidBishopMovesCalculator.currentPieceMoves(board,myPosition);
+            BishopMove BishopMovesCalculator = new BishopMove();
+            return BishopMovesCalculator.currentPieceMoves(board,myPosition);
         } else if(board.getPiece(myPosition).getPieceType() == PieceType.KING){
-            KingMove ValidKingMovesCalculator = new KingMove();
-            return ValidKingMovesCalculator.currentPieceMoves(board,myPosition);
+            KingMove KingMovesCalculator = new KingMove();
+            return KingMovesCalculator.currentPieceMoves(board,myPosition);
+        } else if(board.getPiece(myPosition).getPieceType() == PieceType.KNIGHT){
+            KnightMove KnightMovesCalculator = new KnightMove();
+            return KnightMovesCalculator.currentPieceMoves(board,myPosition);
+        } else if(board.getPiece(myPosition).getPieceType() == PieceType.PAWN){
+            PawnMove PawnMovesCalculator = new PawnMove();
+            return PawnMovesCalculator.currentPieceMoves(board,myPosition);
+        } else if(board.getPiece(myPosition).getPieceType() == PieceType.QUEEN){
+            QueenMove QueenMovesCalculator = new QueenMove();
+            return QueenMovesCalculator.currentPieceMoves(board,myPosition);
+        } else if(board.getPiece(myPosition).getPieceType() == PieceType.ROOK){
+            RookMove RookMovesCalculator = new RookMove();
+            return RookMovesCalculator.currentPieceMoves(board,myPosition);
         }
         return null;
     }

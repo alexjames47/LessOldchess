@@ -30,6 +30,13 @@ public class PawnMove extends PieceMoveCalculator implements PieceMove{
             if(withinBoard(chessPositions[1],movableDirections[i])){
                 if(whitePawnCanMove(currentBoard, i, chessPositions[1])){
                     movesHashSet.add(pieceMoveAdder(chessPositions, movableDirections[i], currentBoard)); //add the possible move
+                    if(i==0
+                            && !movesHashSet.contains(null)
+                            && initialPosition.getRow()==2
+                            && currentBoard.isSpaceEmpty(new ChessPosition(chessPositions[1].getRow()+1,chessPositions[1].getColumn()))){
+                        movesHashSet.add(pieceMoveAdder(chessPositions, movableDirections[i], currentBoard)); // Add initial double move
+                    }
+
                 }
             }
             chessPositions[1] = chessPositions[0];
@@ -47,6 +54,12 @@ public class PawnMove extends PieceMoveCalculator implements PieceMove{
             if(withinBoard(chessPositions[1],movableDirections[i])){
                 if(blackPawnCanMove(currentBoard, i, chessPositions[1])){
                     movesHashSet.add(pieceMoveAdder(chessPositions, movableDirections[i], currentBoard)); //add the possible move
+                    if(i==0
+                            && !movesHashSet.contains(null)
+                            && initialPosition.getRow()==7
+                            && currentBoard.isSpaceEmpty(new ChessPosition(chessPositions[1].getRow()-1,chessPositions[1].getColumn()))){
+                        movesHashSet.add(pieceMoveAdder(chessPositions, movableDirections[i], currentBoard)); // Add initial double move
+                    }
                 }
             }
             chessPositions[1] = chessPositions[0];
@@ -84,12 +97,12 @@ public class PawnMove extends PieceMoveCalculator implements PieceMove{
     int[][] blackPawnMovableDirections(){
         int[][] directions = new int[3][2];
         //S
-        directions[0][0] = 0;
-        directions[0][1] = 1;
+        directions[0][0] = -1;
+        directions[0][1] = 0;
         //SE
         directions[1][0] = -1;
         directions[1][1] = 1;
-        //NW
+        //SW
         directions[2][0] = -1;
         directions[2][1] = -1;
         return directions;

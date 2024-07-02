@@ -25,20 +25,31 @@ public class PawnMove extends PieceMoveCalculator implements PieceMove{
         return movesHashSet;
     }
 
-    int[][] pawnMovableDirections(){
-        int[][] directions = new int[4][2];
-        //SW
-        directions[0][0] = -1;
-        directions[0][1] = -1;
+    int[][] whitePawnMovableDirections(){
+        int[][] directions = new int[3][2];
+        //N
+        directions[0][0] = 1;
+        directions[0][1] = 0;
+        //NE
+        directions[1][0] = 1;
+        directions[1][1] = 1;
+        //NW
+        directions[2][0] = 1;
+        directions[2][1] = -1;
+        return directions;
+    }
+
+    int[][] blackPawnMovableDirections(){
+        int[][] directions = new int[3][2];
+        //S
+        directions[0][0] = 0;
+        directions[0][1] = 1;
         //SE
         directions[1][0] = -1;
         directions[1][1] = 1;
-        //NE
-        directions[2][0] = 1;
-        directions[2][1] = 1;
         //NW
-        directions[3][0] = 1;
-        directions[3][1] = -1;
+        directions[2][0] = -1;
+        directions[2][1] = -1;
         return directions;
     }
 

@@ -1,9 +1,6 @@
 package chess.chessMoveCalculators;
 
-import chess.ChessBoard;
-import chess.ChessGame;
-import chess.ChessMove;
-import chess.ChessPosition;
+import chess.*;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -42,7 +39,7 @@ public class PawnMove extends PieceMoveCalculator implements PieceMove{
             chessPositions[1] = chessPositions[0];
         }
         movesHashSet.remove(null);
-        return movesHashSet;
+        return addPromotionOptions(movesHashSet);
     }
 
     public Collection<ChessMove> blackPawnMoves(ChessBoard currentBoard, ChessPosition currentPosition){
@@ -65,7 +62,23 @@ public class PawnMove extends PieceMoveCalculator implements PieceMove{
             chessPositions[1] = chessPositions[0];
         }
         movesHashSet.remove(null);
-        return movesHashSet;
+        return addPromotionOptions(movesHashSet);
+    }
+
+    public Collection<ChessMove> addPromotionOptions(HashSet<ChessMove> movesHashSet){
+        HashSet<ChessMove> pawnMovesHashSet = new HashSet<>();
+        for(ChessMove currentMove : movesHashSet){
+            if(currentMove.getEndPosition().getRow()==1
+                || currentMove.getEndPosition().getRow()==8){
+                pawnMovesHashSet.add(new ChessMove(currentMove.getStartPosition(),currentMove.getEndPosition(), ChessPiece.PieceType.QUEEN));
+                pawnMovesHashSet.add(new ChessMove(currentMove.getStartPosition(),currentMove.getEndPosition(), ChessPiece.PieceType.ROOK));
+                pawnMovesHashSet.add(new ChessMove(currentMove.getStartPosition(),currentMove.getEndPosition(), ChessPiece.PieceType.BISHOP));
+                pawnMovesHashSet.add(new ChessMove(currentMove.getStartPosition(),currentMove.getEndPosition(), ChessPiece.PieceType.KNIGHT));
+            } else {
+                pawnMovesHashSet.add(currentMove);
+            }
+        }
+        return pawnMovesHashSet;
     }
 
     boolean whitePawnCanMove(ChessBoard currentBoard, int i, ChessPosition currentPosition){

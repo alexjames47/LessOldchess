@@ -15,7 +15,7 @@ public class BishopMove extends PieceMoveCalculator implements PieceMove{
         ChessPosition[] chessPositions = new ChessPosition[]{initialPosition,currentPosition};
         for (int i=0; i<4; i++){
             while(withinBoard(chessPositions[1],movableDirections[i])){
-                movesHashSet.add() //add the possible move with the Calculator
+                movesHashSet.add(pieceMoveAdder(chessPositions, movableDirections[i], currentBoard)); //add the possible move
                 if(!currentBoard.isSpaceEmpty(chessPositions[1])){break;}
             }
             chessPositions[1] = chessPositions[0];

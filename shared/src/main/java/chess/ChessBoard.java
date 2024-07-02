@@ -1,6 +1,7 @@
 package chess;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Objects;
 
 /**
@@ -12,8 +13,9 @@ import java.util.Objects;
 public class ChessBoard {
 
     ChessPiece[][] currentBoard = new ChessPiece[8][8];
+    public ChessBoard() {
 
-    public ChessBoard() {}
+    }
     //I made my chessboard a 2D Array of ChessPiece objects
     /**
      * Adds a chess piece to the chessboard
@@ -22,7 +24,8 @@ public class ChessBoard {
      * @param piece    the piece to add
      */
     public void addPiece(ChessPosition position, ChessPiece piece) {
-        currentBoard[position.getRow()-1][position.getColumn()-1] = piece;
+        ChessPiece currentPiece = new ChessPiece(piece.getTeamColor(),piece.getPieceType());
+        currentBoard[position.getRow()-1][position.getColumn()-1] = currentPiece;
     }
 
     /**

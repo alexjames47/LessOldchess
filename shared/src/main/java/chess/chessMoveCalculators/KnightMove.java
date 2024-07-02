@@ -15,7 +15,7 @@ public class KnightMove extends PieceMoveCalculator implements PieceMove{
         ChessPosition initialPosition = new ChessPosition(currentPosition.getRow(),currentPosition.getColumn());
         ChessPosition[] chessPositions = new ChessPosition[]{initialPosition,currentPosition};
         for (int i=0; i<8; i++){
-            while(withinBoard(chessPositions[1],movableDirections[i])){
+            if(withinBoard(chessPositions[1],movableDirections[i])){
                 movesHashSet.add(pieceMoveAdder(chessPositions, movableDirections[i], currentBoard)); //add the possible move
             }
             chessPositions[1] = chessPositions[0];

@@ -85,7 +85,8 @@ public class ChessGame {
      * @return True if the specified team is in check
      */
     public boolean isInCheck(TeamColor teamColor) {
-        throw new RuntimeException("Not implemented");
+        KingEndangerCalculator endangerCalculator = new KingEndangerCalculator();
+        return endangerCalculator.isKingEndangeredOnBoard(currentBoard,teamColor);
     }
 
     /**

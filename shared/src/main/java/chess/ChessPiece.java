@@ -94,7 +94,7 @@ public class ChessPiece {
         String temp;
         if(this.currentType == PieceType.KNIGHT){temp = String.valueOf(this.currentType).substring(1,2);}
         else {temp = String.valueOf(this.currentType).substring(0,1);}
-        if(this.currentPieceColor == ChessGame.TeamColor.WHITE) {temp = temp.toLowerCase();}
+        if(this.currentPieceColor == ChessGame.TeamColor.BLACK) {temp = temp.toLowerCase();}
         return temp;
     }
 }

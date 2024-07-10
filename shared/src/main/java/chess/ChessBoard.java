@@ -128,14 +128,13 @@ public class ChessBoard {
     public String toString() {
         StringBuilder builtBoard = new StringBuilder();
         builtBoard.append("|");
-        for (int i=0; i<8; i++){
-
-            if(i>0) {
+        for (int i=8; i>0; i--){
+            if(i!=8) {
                 builtBoard.append("\n");
                 builtBoard.append("|");
             }
             for (int j=0; j<8; j++){
-                ChessPosition currentPosition = new ChessPosition(i+1,j+1);
+                ChessPosition currentPosition = new ChessPosition(i,j+1);
                 if(this.getPiece(currentPosition) != null){
                     builtBoard.append(getPiece(currentPosition).toString());
                 }

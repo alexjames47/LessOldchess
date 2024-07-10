@@ -13,12 +13,21 @@ public class ChessMove {
     ChessPosition startPosition;
     ChessPosition endPosition;
     ChessPiece.PieceType promotionPiece;
+    boolean endangersEnemyKing = false;
 
     public ChessMove(ChessPosition startPosition, ChessPosition endPosition,
                      ChessPiece.PieceType promotionPiece) {
         this.startPosition = startPosition;
         this.endPosition = endPosition;
         this.promotionPiece = promotionPiece;
+    }
+
+    public ChessMove(ChessPosition startPosition, ChessPosition endPosition,
+                     ChessPiece.PieceType promotionPiece, boolean endangersEnemyKing) {
+        this.startPosition = startPosition;
+        this.endPosition = endPosition;
+        this.promotionPiece = promotionPiece;
+        this.endangersEnemyKing = endangersEnemyKing;
     }
 
     /**
@@ -43,6 +52,14 @@ public class ChessMove {
      */
     public ChessPiece.PieceType getPromotionPiece() {
         return this.promotionPiece;
+    }
+
+    public boolean getEndangersEnemyKing() {
+        return endangersEnemyKing;
+    }
+
+    public void setEndangersEnemyKing(boolean endangersEnemyKing) {
+        this.endangersEnemyKing = endangersEnemyKing;
     }
 
     @Override

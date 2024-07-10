@@ -2,6 +2,7 @@ package chess.chessMoveCalculators;
 
 import chess.ChessBoard;
 import chess.ChessMove;
+import chess.ChessPiece;
 import chess.ChessPosition;
 
 public class PieceMoveCalculator {
@@ -13,6 +14,9 @@ public class PieceMoveCalculator {
         chessPositions[1] = possibleNewPosition;
 
         if(currentBoard.isSpaceEmpty(possibleNewPosition) || currentBoard.getOccupiedSpaceColor(startingPosition) != currentBoard.getOccupiedSpaceColor(possibleNewPosition)){
+            if(currentBoard.getPiece(possibleNewPosition).getPieceType() == ChessPiece.PieceType.KING){
+                return new ChessMove(startingPosition,possibleNewPosition,null,true);
+            }
             return new ChessMove(startingPosition,possibleNewPosition,null);
         } else return null;
     }

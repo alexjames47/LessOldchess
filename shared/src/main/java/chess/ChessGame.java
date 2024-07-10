@@ -50,8 +50,8 @@ public class ChessGame {
      */
     public Collection<ChessMove> validMoves(ChessPosition startPosition) {
         Collection<ChessMove> moveCollection = currentBoard.getPiece(startPosition).pieceMoves(currentBoard,startPosition);
-        KingEndagerCalculator endagerCalculator = new KingEndagerCalculator();
-        return endagerCalculator.removeEndangeringMoves(moveCollection,currentBoard);
+        KingEndangerCalculator endangerCalculator = new KingEndangerCalculator();
+        return endangerCalculator.removeEndangeringMoves(moveCollection,currentBoard);
     }
 
     /**

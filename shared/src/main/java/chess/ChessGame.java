@@ -49,7 +49,9 @@ public class ChessGame {
      * startPosition
      */
     public Collection<ChessMove> validMoves(ChessPosition startPosition) {
-        throw new RuntimeException("Not implemented");
+        Collection<ChessMove> moveCollection = currentBoard.getPiece(startPosition).pieceMoves(currentBoard,startPosition);
+        KingEndagerCalculator endagerCalculator = new KingEndagerCalculator();
+        return endagerCalculator.removeEndangeringMoves(moveCollection,currentBoard);
     }
 
     /**
@@ -59,7 +61,9 @@ public class ChessGame {
      * @throws InvalidMoveException if move is invalid
      */
     public void makeMove(ChessMove move) throws InvalidMoveException {
+        if(currentBoard.getCurrentBoard()[move.getStartPosition().getRow()-1][move.getStartPosition().getColumn()-1] != null){
 
+        }
     }
 
     /**

@@ -19,6 +19,11 @@ public class ChessBoard {
     //I made my chessboard a 2D Array of ChessPiece objects
     public ChessBoard(ChessBoard newBoard){
         this.clearBoard();
+        for(int i=0; i<8; i++){
+            for(int j=0; j<8; j++){
+                currentBoard[i][j] = new ChessPiece(newBoard.getOccupiedSpaceColor(new ChessPosition(i+1,j+1)),newBoard.getCurrentBoard()[i][j].getPieceType());
+            }
+        }
         currentBoard = newBoard.getCurrentBoard();
     }
 

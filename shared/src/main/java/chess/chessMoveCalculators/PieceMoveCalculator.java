@@ -14,7 +14,7 @@ public class PieceMoveCalculator {
         chessPositions[1] = possibleNewPosition;
 
         if(currentBoard.isSpaceEmpty(possibleNewPosition) || currentBoard.getOccupiedSpaceColor(startingPosition) != currentBoard.getOccupiedSpaceColor(possibleNewPosition)){
-            if(currentBoard.getPiece(possibleNewPosition).getPieceType() == ChessPiece.PieceType.KING){
+            if(!currentBoard.isSpaceEmpty(possibleNewPosition) && currentBoard.getPiece(possibleNewPosition).getPieceType() == ChessPiece.PieceType.KING){
                 return new ChessMove(startingPosition,possibleNewPosition,null,true);
             }
             return new ChessMove(startingPosition,possibleNewPosition,null);

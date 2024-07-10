@@ -97,7 +97,23 @@ public class ChessGame {
      * @return True if the specified team is in checkmate
      */
     public boolean isInCheckmate(TeamColor teamColor) {
-        throw new RuntimeException("Not implemented");
+        //parses through all possible moves on the board and returns false if at least one of them do not endanger the king
+        KingEndangerCalculator endangerCalculator = new KingEndangerCalculator();
+        if(!isInCheck(teamColor)){return false;}
+        else {
+            for(int i=0; i<8; i++){
+                for(int j=0; j<8; j++){
+                    if(currentBoard.getPiece(new ChessPosition(i+1,j+1)) != null
+                            && currentBoard.getPiece(new ChessPosition(i+1,j+1)).getTeamColor() == teamColor){
+                        Collection<ChessMove> moves = currentBoard.getPiece(new ChessPosition(i+1,j+1)).pieceMoves(currentBoard,new ChessPosition(i+1,j+1));
+                        for(ChessMove currentMove: moves) {
+                            if(endangerCalculator.isKingEndangered(currentMove,currentBoard)){return false;}
+                        }
+                    }
+                }
+            }
+            return true;
+        }
     }
 
     /**

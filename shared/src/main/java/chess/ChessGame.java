@@ -74,6 +74,7 @@ public class ChessGame {
             currentBoard.getCurrentBoard()[move.getStartPosition().getRow()-1][move.getStartPosition().getColumn()-1] = null;
             if(playerTurn == TeamColor.WHITE) {playerTurn = TeamColor.BLACK;}
             else {playerTurn = TeamColor.WHITE;}
+
         } else {
             throw new InvalidMoveException();
         }

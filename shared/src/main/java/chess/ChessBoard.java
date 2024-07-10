@@ -17,6 +17,12 @@ public class ChessBoard {
 
     }
     //I made my chessboard a 2D Array of ChessPiece objects
+    public ChessBoard(ChessBoard newBoard){
+        this.clearBoard();
+        currentBoard = newBoard.getCurrentBoard();
+    }
+
+    // copies a board from a given chessboard
     /**
      * Adds a chess piece to the chessboard
      *

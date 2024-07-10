@@ -6,27 +6,15 @@ import chess.ChessPosition;
 
 public class PieceMoveCalculator {
 
-    ChessMove pieceMoveAdder(ChessPosition[] chessPositions, int[] movableDirections, ChessBoard currentBoard){
+    ChessMove pieceMoveAdder(ChessPosition[] chessPositions, int[] movableDirection, ChessBoard currentBoard){
         ChessPosition startingPosition = chessPositions[0];
-        ChessPosition currentPosition = chessPositions[1];
-        ChessPosition possibleNewPosition = new
-                ChessPosition(currentPosition.getRow()+movableDirections[0],currentPosition.getColumn()+movableDirections[1]);
+        ChessPosition possibleNewPosition = new ChessPosition(chessPositions[1].getRow()+movableDirection[0],chessPositions[1].getColumn()+movableDirection[1]);
 
-        if(!currentBoard.isSpaceEmpty(possibleNewPosition)){
-            if(currentBoard.getOccupiedSpaceColor(startingPosition) != currentBoard.getOccupiedSpaceColor(possibleNewPosition)){
-                ChessMove moveToAdd = new ChessMove(startingPosition,possibleNewPosition,null);
-                chessPositions[1] = possibleNewPosition;
-                return moveToAdd; // Can Move here and Take Piece
-            } else if(currentBoard.getOccupiedSpaceColor(startingPosition) == currentBoard.getOccupiedSpaceColor(possibleNewPosition)){
-                chessPositions[1] = possibleNewPosition;
-                return null; // Cannot Move here - Occupied by friendly piece
-            }
-        } else if(currentBoard.isSpaceEmpty(possibleNewPosition)) {
-            ChessMove moveToAdd = new ChessMove(startingPosition,possibleNewPosition,null);
-            chessPositions[1] = possibleNewPosition;
-            return moveToAdd; // Can Move here
-        }
-        return null;
+        chessPositions[1] = possibleNewPosition;
+
+        if(currentBoard.isSpaceEmpty(possibleNewPosition) || currentBoard.getOccupiedSpaceColor(startingPosition) != currentBoard.getOccupiedSpaceColor(possibleNewPosition)){
+            return new ChessMove(startingPosition,possibleNewPosition,null);
+        } else return null;
     }
 
     boolean withinBoard(ChessPosition currentPosition, int[] currentDirection){

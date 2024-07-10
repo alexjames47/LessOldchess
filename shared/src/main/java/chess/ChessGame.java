@@ -133,13 +133,22 @@ public class ChessGame {
                             && currentBoard.getPiece(new ChessPosition(i+1,j+1)).getTeamColor() == teamColor){
                         Collection<ChessMove> moves = currentBoard.getPiece(new ChessPosition(i+1,j+1)).pieceMoves(currentBoard,new ChessPosition(i+1,j+1));
                         for(ChessMove currentMove: moves) {
-                            if(endangerCalculator.isKingEndangered(currentMove,currentBoard)){return false;}
+                            if(!endangerCalculator.isKingEndangered(currentMove,currentBoard)){return false;}
                         }
                     }
                 }
             }
-            return true;
+            if(currentBoard != null) {
+                for (ChessPiece[] row : currentBoard.getCurrentBoard()) {
+                    for (ChessPiece temp : row) {
+                        if (temp != null) {
+                            return true;
+                        }
+                    }
+                }
+            }
         } else {return false;}
+        return false;
     }
 
     /**

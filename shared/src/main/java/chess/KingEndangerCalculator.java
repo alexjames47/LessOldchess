@@ -35,13 +35,11 @@ public class KingEndangerCalculator {
                     for(ChessMove currentMove : tempBoard.getPiece(new ChessPosition(i+1,j+1)).pieceMoves(tempBoard,new ChessPosition(i+1,j+1))){
                         if(currentMove.getEndangersEnemyKing()){
                             isKingEndangered = true;
+                            return isKingEndangered;
                         }
-                        if(isKingEndangered){break;}
                     }
                 }
-                if(isKingEndangered){break;}
             }
-            if(isKingEndangered){break;}
         }
         return isKingEndangered;
     }

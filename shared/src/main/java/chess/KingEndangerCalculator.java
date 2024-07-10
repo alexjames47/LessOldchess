@@ -30,8 +30,9 @@ public class KingEndangerCalculator {
         boolean isKingEndangered = false;
         for(int i=0; i<8; i++){
             for(int j=0; j<8; j++){
-                if(tempBoard.getCurrentBoard()[i][j] != null
-                    && tempBoard.getPiece(new ChessPosition(i+1,j+1)).getTeamColor() != playerTurn){
+                if(tempBoard != null
+                        && tempBoard.getCurrentBoard()[i][j] != null
+                        && tempBoard.getPiece(new ChessPosition(i+1,j+1)).getTeamColor() != playerTurn){
                     for(ChessMove currentMove : tempBoard.getPiece(new ChessPosition(i+1,j+1)).pieceMoves(tempBoard,new ChessPosition(i+1,j+1))){
                         if(currentMove.getEndangersEnemyKing()){
                             isKingEndangered = true;

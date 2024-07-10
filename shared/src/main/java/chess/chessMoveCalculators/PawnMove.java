@@ -70,10 +70,10 @@ public class PawnMove extends PieceMoveCalculator implements PieceMove{
         for(ChessMove currentMove : movesHashSet){
             if(currentMove.getEndPosition().getRow()==1
                 || currentMove.getEndPosition().getRow()==8){
-                pawnMovesHashSet.add(new ChessMove(currentMove.getStartPosition(),currentMove.getEndPosition(), ChessPiece.PieceType.QUEEN));
-                pawnMovesHashSet.add(new ChessMove(currentMove.getStartPosition(),currentMove.getEndPosition(), ChessPiece.PieceType.ROOK));
-                pawnMovesHashSet.add(new ChessMove(currentMove.getStartPosition(),currentMove.getEndPosition(), ChessPiece.PieceType.BISHOP));
-                pawnMovesHashSet.add(new ChessMove(currentMove.getStartPosition(),currentMove.getEndPosition(), ChessPiece.PieceType.KNIGHT));
+                pawnMovesHashSet.add(new ChessMove(currentMove.getStartPosition(),currentMove.getEndPosition(), ChessPiece.PieceType.QUEEN, currentMove.getEndangersEnemyKing()));
+                pawnMovesHashSet.add(new ChessMove(currentMove.getStartPosition(),currentMove.getEndPosition(), ChessPiece.PieceType.ROOK, currentMove.getEndangersEnemyKing()));
+                pawnMovesHashSet.add(new ChessMove(currentMove.getStartPosition(),currentMove.getEndPosition(), ChessPiece.PieceType.BISHOP, currentMove.getEndangersEnemyKing()));
+                pawnMovesHashSet.add(new ChessMove(currentMove.getStartPosition(),currentMove.getEndPosition(), ChessPiece.PieceType.KNIGHT, currentMove.getEndangersEnemyKing()));
             } else {
                 pawnMovesHashSet.add(currentMove);
             }

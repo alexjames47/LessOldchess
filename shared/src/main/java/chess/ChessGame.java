@@ -10,7 +10,7 @@ import java.util.Collection;
  */
 public class ChessGame {
 
-    ChessBoard currentBoard;
+    ChessBoard currentBoard = new ChessBoard();
     TeamColor playerTurn = TeamColor.WHITE;
 
     public ChessGame() {
@@ -128,7 +128,8 @@ public class ChessGame {
         if(!isInCheck(teamColor)){
             for(int i=0; i<8; i++){
                 for(int j=0; j<8; j++){
-                    if(currentBoard.getPiece(new ChessPosition(i+1,j+1)) != null
+                    if(currentBoard != null
+                            && currentBoard.getPiece(new ChessPosition(i+1,j+1)) != null
                             && currentBoard.getPiece(new ChessPosition(i+1,j+1)).getTeamColor() == teamColor){
                         Collection<ChessMove> moves = currentBoard.getPiece(new ChessPosition(i+1,j+1)).pieceMoves(currentBoard,new ChessPosition(i+1,j+1));
                         for(ChessMove currentMove: moves) {

@@ -61,8 +61,20 @@ public class ChessGame {
      * @throws InvalidMoveException if move is invalid
      */
     public void makeMove(ChessMove move) throws InvalidMoveException {
-        if(currentBoard.getCurrentBoard()[move.getStartPosition().getRow()-1][move.getStartPosition().getColumn()-1] != null){
+        if(currentBoard.getCurrentBoard()[move.getStartPosition().getRow()-1][move.getStartPosition().getColumn()-1] != null
+            && validMoves(move.getStartPosition()).contains(move)
+            && currentBoard.getCurrentBoard()[move.getStartPosition().getRow()-1][move.getStartPosition().getColumn()-1].getTeamColor() == playerTurn){
 
+            if(move.getPromotionPiece() != null){
+                currentBoard.addPiece(move.getEndPosition(),new ChessPiece(currentBoard.getOccupiedSpaceColor(move.getStartPosition()),move.getPromotionPiece()));
+            } else {
+                currentBoard.addPiece(move.getEndPosition(), currentBoard.getPiece(move.startPosition));
+            }
+            currentBoard.getCurrentBoard()[move.getStartPosition().getRow()-1][move.getStartPosition().getColumn()-1] = null;
+            if(playerTurn == TeamColor.WHITE) {playerTurn = TeamColor.BLACK;}
+            else {playerTurn = TeamColor.WHITE;}
+        } else {
+            throw new InvalidMoveException();
         }
     }
 
@@ -103,7 +115,7 @@ public class ChessGame {
      * @param board the new board to use
      */
     public void setBoard(ChessBoard board) {
-        currentBoard = new ChessBoard(board);
+        this.currentBoard = new ChessBoard(board);
     }
 
     /**

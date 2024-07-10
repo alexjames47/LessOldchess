@@ -14,7 +14,7 @@ public class ChessGame {
     TeamColor playerTurn = TeamColor.WHITE;
 
     public ChessGame() {
-
+        currentBoard.resetBoard();
     }
 
     /**

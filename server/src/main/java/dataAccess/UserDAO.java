@@ -1,7 +1,6 @@
-package dataaccess;
+package dataAccess;
 
 import model.UserData;
-import org.eclipse.jetty.server.Authentication;
 
 public interface UserDAO {
     void clear();

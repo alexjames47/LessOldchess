@@ -6,7 +6,7 @@ import java.util.HashSet;
 
 public interface GameDAO {
     void clear();
-    GameData getGame(String gameID);
+    GameData getGame(int gameID);
     HashSet<GameData> getAllGames();
     GameData insertGame(GameData newGame);
 }

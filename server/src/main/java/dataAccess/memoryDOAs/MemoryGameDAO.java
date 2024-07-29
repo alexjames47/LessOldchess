@@ -12,7 +12,7 @@ import static java.util.HashSet.newHashSet;
 
 public class MemoryGameDAO implements GameDAO {
 
-    private final Map<String, GameData> gamesList = new HashMap<>();
+    private final Map<Integer, GameData> gamesList = new HashMap<>();
 
     @Override
     public void clear() {
@@ -20,7 +20,7 @@ public class MemoryGameDAO implements GameDAO {
     }
 
     @Override
-    public GameData getGame(String gameID) {
+    public GameData getGame(int gameID) {
         return gamesList.get(gameID);
     }
 
@@ -31,7 +31,8 @@ public class MemoryGameDAO implements GameDAO {
 
     @Override
     public GameData insertGame(GameData newGame) {
-        String gameID = UUID.randomUUID().toString();
+        int gameID = 1;
+        while(gamesList.get(gameID) != null){gameID++;}
         newGame = new GameData(gameID, newGame.whiteUsername(), newGame.blackUsername(), newGame.gameName(), newGame.game());
         gamesList.put(gameID,newGame);
         return newGame;
